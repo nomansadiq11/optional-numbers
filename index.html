@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phone Cache</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Phone Cache</h1>
+        <p>Save numbers and open WhatsApp quickly.</p>
+      </header>
+
+      <section class="card">
+        <form id="phone-form" novalidate>
+          <label for="country">Select country</label>
+          <select id="country" required>
+            <option value="" disabled selected>Choose country</option>
+            <option value="+971">United Arab Emirates (+971)</option>
+            <option value="+1">United States/Canada (+1)</option>
+            <option value="+44">United Kingdom (+44)</option>
+            <option value="+91">India (+91)</option>
+            <option value="+92">Pakistan (+92)</option>
+            <option value="+61">Australia (+61)</option>
+            <option value="+966">Saudi Arabia (+966)</option>
+            <option value="+974">Qatar (+974)</option>
+            <option value="+968">Oman (+968)</option>
+            <option value="+965">Kuwait (+965)</option>
+          </select>
+
+          <label for="phone">Enter number</label>
+          <input
+            id="phone"
+            type="tel"
+            inputmode="numeric"
+            autocomplete="tel"
+            placeholder="e.g. 501234567"
+            required
+          />
+
+          <button id="save-btn" type="submit">Save Number</button>
+          <p id="form-message" class="message" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Saved Numbers</h2>
+        <ul id="number-list" class="number-list"></ul>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

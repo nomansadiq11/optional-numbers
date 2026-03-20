@@ -1,0 +1,171 @@
+:root {
+  --bg-1: #f7f4ec;
+  --bg-2: #efe6d2;
+  --card: #fffdf8;
+  --text: #1d1a14;
+  --muted: #6f6758;
+  --accent: #0f766e;
+  --accent-2: #0c5b55;
+  --danger: #c0392b;
+  --line: #e9dec8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top right, var(--bg-2), var(--bg-1));
+}
+
+.app {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+header p {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 6px 24px rgba(60, 46, 19, 0.08);
+}
+
+form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+select,
+input,
+button {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ccbfa7;
+  font-size: 1rem;
+  padding: 0.7rem 0.8rem;
+  font: inherit;
+}
+
+button {
+  border: 0;
+  color: #fff;
+  background: var(--accent);
+  font-weight: 700;
+}
+
+button:hover {
+  background: var(--accent-2);
+  cursor: pointer;
+}
+
+.message {
+  min-height: 1.2rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+h2 {
+  margin: 0 0 0.8rem;
+}
+
+.number-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.number-item {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.number-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.phone-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45rem;
+}
+
+.actions button,
+.actions a {
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 0.55rem 0.4rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.edit-btn {
+  background: #2563eb;
+  color: #fff;
+}
+
+.delete-btn {
+  background: var(--danger);
+  color: #fff;
+}
+
+.whatsapp-btn {
+  background: #25d366;
+  color: #fff;
+}
+
+.empty {
+  margin: 0;
+  color: var(--muted);
+}
+
+@media (max-width: 560px) {
+  .app {
+    padding: 0.8rem;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}
