@@ -7,11 +7,14 @@ const phoneInput = document.getElementById("phone");
 const listEl = document.getElementById("number-list");
 const messageEl = document.getElementById("form-message");
 const saveBtn = document.getElementById("save-btn");
+const exportCsvBtn = document.getElementById("export-csv-btn");
 
 let numbers = loadNumbers();
 let editingId = null;
 
 renderList();
+
+exportCsvBtn.addEventListener("click", exportNumbersAsCsv);
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -167,6 +170,45 @@ function loadNumbers() {
 
 function saveNumbers(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function exportNumbersAsCsv() {
+  if (!numbers.length) {
+    setMessage("No numbers to export.");
+    return;
+  }
+
+  const headers = ["Name", "CountryCode", "Phone", "FullNumber"];
+  const rows = numbers.map((item) => [
+    item.name || "",
+    item.countryCode || "",
+    item.phone || "",
+    `${item.countryCode || ""}${item.phone || ""}`
+  ]);
+
+  const csvContent = [headers, ...rows]
+    .map((row) => row.map(escapeCsvValue).join(","))
+    .join("\n");
+
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const fileUrl = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  const timestamp = new Date().toISOString().slice(0, 10);
+
+  link.href = fileUrl;
+  link.download = `phone-cache-${timestamp}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(fileUrl);
+
+  setMessage("CSV exported successfully.");
+}
+
+function escapeCsvValue(value) {
+  const text = String(value ?? "");
+  const escaped = text.replace(/"/g, '""');
+  return `"${escaped}"`;
 }
 
 function setMessage(text) {

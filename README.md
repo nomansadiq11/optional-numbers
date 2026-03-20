@@ -6,13 +6,14 @@ URL : https://nomansadiq11.github.io/optional-numbers/
 
 ## Features
 
-- Two input fields only:
+- Enter name
 - Select country code
 - Enter phone number
 - List all saved numbers
 - Edit number
 - Delete number
 - Open WhatsApp from each saved number
+- Export all saved numbers as CSV (button above list)
 
 ## How it works
 
@@ -23,6 +24,34 @@ URL : https://nomansadiq11.github.io/optional-numbers/
 ## Run locally
 
 Open `index.html` directly in your browser.
+
+## Use as a mobile app (Android / iPhone)
+
+You can install this website on your phone home screen and use it like an app.
+
+### Android (Chrome)
+
+1. Open the app URL in Chrome:
+	`https://nomansadiq11.github.io/optional-numbers/`
+2. Tap the 3-dot menu in Chrome.
+3. Tap **Add to Home screen** or **Install app**.
+4. Confirm install.
+5. Open it from your home screen like a normal app.
+
+### iPhone (Safari)
+
+1. Open the app URL in Safari:
+	`https://nomansadiq11.github.io/optional-numbers/`
+2. Tap the **Share** button.
+3. Tap **Add to Home Screen**.
+4. Tap **Add**.
+5. Open it from your home screen like a normal app.
+
+### Important notes
+
+- Your numbers are saved in browser localStorage on that phone.
+- If you clear browser/site data, saved numbers will be removed.
+- Data does not sync automatically between different devices.
 
 ## Deploy on GitHub Pages
 

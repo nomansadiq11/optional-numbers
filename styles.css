@@ -91,6 +91,24 @@ h2 {
   margin: 0 0 0.8rem;
 }
 
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.8rem;
+}
+
+#export-csv-btn {
+  width: auto;
+  padding: 0.55rem 0.85rem;
+  background: #7a5218;
+}
+
+#export-csv-btn:hover {
+  background: #5f3f12;
+}
+
 .number-list {
   margin: 0;
   padding: 0;
@@ -174,5 +192,14 @@ h2 {
 
   .actions {
     grid-template-columns: 1fr;
+  }
+
+  .list-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #export-csv-btn {
+    width: 100%;
   }
 }
