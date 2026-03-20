@@ -1,6 +1,7 @@
 const STORAGE_KEY = "phone-cache-items";
 
 const form = document.getElementById("phone-form");
+const nameInput = document.getElementById("name");
 const countryInput = document.getElementById("country");
 const phoneInput = document.getElementById("phone");
 const listEl = document.getElementById("number-list");
@@ -15,9 +16,15 @@ renderList();
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  const name = nameInput.value.trim();
   const countryCode = countryInput.value;
   const rawPhone = phoneInput.value.trim();
   const cleanPhone = rawPhone.replace(/\D+/g, "");
+
+  if (!name) {
+    setMessage("Please enter a name.");
+    return;
+  }
 
   if (!countryCode) {
     setMessage("Please select a country.");
@@ -32,7 +39,7 @@ form.addEventListener("submit", (event) => {
   if (editingId) {
     numbers = numbers.map((item) =>
       item.id === editingId
-        ? { ...item, countryCode, phone: cleanPhone, updatedAt: Date.now() }
+        ? { ...item, name, countryCode, phone: cleanPhone, updatedAt: Date.now() }
         : item
     );
 
@@ -40,6 +47,7 @@ form.addEventListener("submit", (event) => {
   } else {
     numbers.unshift({
       id: crypto.randomUUID(),
+      name,
       countryCode,
       phone: cleanPhone,
       createdAt: Date.now(),
@@ -66,11 +74,13 @@ function renderList() {
     const li = document.createElement("li");
     li.className = "number-item";
 
+    const ownerName = item.name || "Unknown";
     const fullNumber = `${item.countryCode}${item.phone}`;
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${fullNumber}`;
 
     li.innerHTML = `
       <div class="number-main">
+        <span class="name-value">${ownerName}</span>
         <span class="phone-value">${fullNumber}</span>
       </div>
       <div class="actions">
@@ -108,11 +118,12 @@ function startEdit(id) {
   }
 
   editingId = id;
+  nameInput.value = item.name || "";
   countryInput.value = item.countryCode;
   phoneInput.value = item.phone;
   saveBtn.textContent = "Update Number";
-  setMessage(`Editing ${item.countryCode}${item.phone}`);
-  phoneInput.focus();
+  setMessage(`Editing ${item.name || "contact"}`);
+  nameInput.focus();
 }
 
 function removeNumber(id) {
@@ -141,7 +152,14 @@ function loadNumbers() {
 
   try {
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+
+    return parsed.map((item) => ({
+      ...item,
+      name: typeof item.name === "string" ? item.name : ""
+    }));
   } catch {
     return [];
   }
