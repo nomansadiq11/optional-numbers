@@ -13,6 +13,7 @@ URL : https://nomansadiq11.github.io/optional-numbers/
 - Edit number
 - Delete number
 - Open WhatsApp from each saved number
+- Import numbers from CSV (button above list)
 - Export all saved numbers as CSV (button above list)
 
 ## How it works

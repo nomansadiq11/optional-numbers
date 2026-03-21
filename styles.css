@@ -99,9 +99,26 @@ h2 {
   margin-bottom: 0.8rem;
 }
 
+.list-tools {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#import-csv-btn,
 #export-csv-btn {
   width: auto;
   padding: 0.55rem 0.85rem;
+}
+
+#import-csv-btn {
+  background: #334155;
+}
+
+#import-csv-btn:hover {
+  background: #1f2937;
+}
+
+#export-csv-btn {
   background: #7a5218;
 }
 
@@ -199,6 +216,11 @@ h2 {
     align-items: stretch;
   }
 
+  .list-tools {
+    flex-direction: column;
+  }
+
+  #import-csv-btn,
   #export-csv-btn {
     width: 100%;
   }

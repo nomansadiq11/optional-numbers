@@ -57,8 +57,12 @@
       <section class="card">
         <div class="list-header">
           <h2>Saved Numbers</h2>
-          <button id="export-csv-btn" type="button">Export CSV</button>
+          <div class="list-tools">
+            <button id="import-csv-btn" type="button">Import CSV</button>
+            <button id="export-csv-btn" type="button">Export CSV</button>
+          </div>
         </div>
+        <input id="import-csv-input" type="file" accept=".csv,text/csv" hidden />
         <ul id="number-list" class="number-list"></ul>
       </section>
     </main>
